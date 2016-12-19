@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+
+public class PieceOfCake {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		 * the minimum perimeter or the length side will simply be the square root of the area. 
+		 */
+		
+		Scanner sc= new Scanner (System.in);
+		int iteration=sc.nextInt();
+		long perimeter=0;
+		long[] arr= new long[iteration];
+		long[] areaRec=new long[iteration];
+		int l=0;
+		int i=0;
+		while(iteration>0){
+			arr[i++]=sc.nextLong();
+			--iteration;
+		}
+		
+		for(long k:arr){
+			 perimeter=(4*Math.round(Math.pow(k,.5)));
+			 areaRec[l]=perimeter;
+			 l++;
+		}
+		for(long j:areaRec){
+			System.out.println(j);
+		}
+
+	}
+
+}
