@@ -1,1 +1,84 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+
+
+public class ZipcodeLookup {
+	private Connection connection;
+	private Statement statement;
+	
+	public static void main(String[] args) {
+
+		
+		System.out.println("Enter the zipcode");
+		Scanner sc= new Scanner(System.in);
+		String zipcode=sc.next();
+
+		try {
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+			return;
+
+		}
+
+
+		Connection connection = null;
+
+		try {
+			//jdbc:oracle:thin:@localhost:1521:orcl1
+			connection = DriverManager.getConnection(
+					"jdbc:oracle:thin:@localhost:1521:orcl1", "hr",
+					"admin");
+
+		} catch (SQLException e) {
+
+			System.out.println("Connection Failed! Check output console");
+			e.printStackTrace();
+			return;
+
+		}
+
+		if (connection != null) {
+			Statement stmt=null;
+			try {
+				stmt = connection.createStatement();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				stmt = connection.createStatement();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}  
+			  
+			//step4 execute query  
+			try {
+				ResultSet rs=stmt.executeQuery("select city,abbreviation from zipcode where zipcode= '"+zipcode+"'");
+				while(rs.next()){
+					System.out.print(rs.getString(1)+","+rs.getString(2));
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}  
+			
+		} else {
+			System.out.println("Failed to make connection!");
+		}
+	}
+		
+		
+	}
+
 
