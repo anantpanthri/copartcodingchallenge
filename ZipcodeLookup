@@ -46,7 +46,6 @@ public class ZipcodeLookup {
 
 		}
 
-
 		if (connection != null) {
 			Statement stmt=null;
 			try {
@@ -66,7 +65,7 @@ public class ZipcodeLookup {
 			try {
 				ResultSet rs=stmt.executeQuery("select city,abbreviation from zipcode where zipcode= '"+zipcode+"'");
 				while(rs.next()){
-					System.out.print(rs.getString(1)+","+rs.getString(2));
+					System.out.print(rs.getString(1)+","+rs.getString(2)+"\n");
 				}
 				
 			} catch (SQLException e) {
@@ -81,5 +80,4 @@ public class ZipcodeLookup {
 		
 		
 	}
-
 
