@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+
+public class DNASequencing {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter string correspoding to sequenced DNA molecule");
+		String s=sc.next();
+		//char ch[]=s.toCharArray();
+		String result=longestSequenceOfChar(s);
+		
+		System.out.println(result.charAt(0)+""+result.length());
+
+	}
+	public static String longestSequenceOfChar(String str) {
+	    String result = "";
+
+	    for (int i = 0; i < str.length(); i++) {
+	        int j = i;
+	        while(j < str.length() && str.charAt(j) == str.charAt(i)) {
+	            j++;
+	        }
+
+	            if(j - i > result.length()) {
+	            result = str.substring(i, j);
+	        }
+	    }
+	    return result;
+	}
+
+}
