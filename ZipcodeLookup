@@ -46,6 +46,7 @@ public class ZipcodeLookup {
 
 		}
 
+
 		if (connection != null) {
 			Statement stmt=null;
 			try {
